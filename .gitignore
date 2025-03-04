@@ -35,3 +35,7 @@ taskify-*.tar
 npm-debug.log
 /assets/node_modules/
 
+# Untrack config files
+config/dev.local.exs
+config/test.local.exs
+
