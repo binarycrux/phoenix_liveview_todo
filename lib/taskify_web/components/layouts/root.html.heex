@@ -4,14 +4,77 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="Taskify" suffix=" · Phoenix Framework">
+    <.live_title default="Taskify" suffix=" · Just Do It">
       {assigns[:page_title]}
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="bg-white">
+  <body class="bg-white relative top-5">
+    <.link
+    navigate={~p"/"}
+    class="text-[1rem] leading-6 text-brand px-8 pt-1 pb-2 bg-zinc-50 font-semibold absolute top-1 left-3"
+  >
+    Taskify ~ Just Do It!
+  </.link>
+    <ul class="relative z-10 text-[0.9rem] flex items-center gap-8 px-4 sm:px-6 lg:px-8 justify-end mb-[30px]">
+      <%= if @current_user do %>
+        <li class="leading-6 text-zinc-900">
+          {@current_user.email}
+        </li>
+        <li>
+          <.link
+            navigate={~p"/"}
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Home
+          </.link>
+        </li>
+        <li>
+          <.link
+            navigate={~p"/users/settings"}
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Settings
+          </.link>
+        </li>
+        <li>
+          <.link
+            navigate={~p"/users/log_out"}
+            method="delete" data-confirm="Want to log out?"
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Log out
+          </.link>
+        </li>
+      <% else %>
+        <li>
+          <.link
+            navigate={~p"/"}
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Home
+          </.link>
+        </li>
+        <li>
+          <.link
+            navigate={~p"/users/register"}
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Register
+          </.link>
+        </li>
+        <li>
+          <.link
+            navigate={~p"/users/log_in"}
+            class="leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+          >
+            Log in
+          </.link>
+        </li>
+      <% end %>
+    </ul>
     {@inner_content}
   </body>
 </html>
