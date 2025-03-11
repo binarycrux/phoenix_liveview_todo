@@ -55,7 +55,7 @@ defmodule TaskifyWeb.NewTaskLive do
               </span>
               <% end %>
               <.link class="text-neutral-700 underline cursor-pointer" navigate={~p"/tasks/#{task}/edit"}>Edit</.link>
-              <.link href={~p"/tasks/#{task.id}"} method="delete" data-confirm="Confirm to delete this task" class="text-red-700 cursor-pointer underline">Delete!
+              <.link href={~p"/tasks/#{task.id}"} method="delete" data-confirm="Confirm to delete this task" class="text-red-700 cursor-pointer underline">Delete
         </.link>
             </div>
           </div>
@@ -64,9 +64,9 @@ defmodule TaskifyWeb.NewTaskLive do
     </section>
     """
   end
-
   def mount(_params, _session, socket) do
     tasks = Repo.all(Task)
     {:ok, assign(socket, changeset: Task.changeset(%Task{}, %{}), tasks: tasks)}
   end
+
 end

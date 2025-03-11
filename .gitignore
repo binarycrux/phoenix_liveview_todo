@@ -38,3 +38,6 @@ npm-debug.log
 # Untrack config files
 config/dev.local.exs
 config/test.local.exs
+
+# 
+*/test_live.ex
