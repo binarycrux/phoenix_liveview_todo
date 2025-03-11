@@ -16,7 +16,7 @@ defmodule TaskifyWeb.IndexLive do
           Stay Organized, Stay Ahead.
         </p>
         <.link
-          navigate={~p"/users/log_in"}
+          navigate={~p"/tasks"}
           class="block px-16 py-2 pb-3 bg-brand text-white rounded-[4px] hover:bg-primary/80"
           >View your Tasks
         </.link>

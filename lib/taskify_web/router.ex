@@ -68,6 +68,13 @@ defmodule TaskifyWeb.Router do
 
     live_session :require_authenticated_user,
       on_mount: [{TaskifyWeb.UserAuth, :ensure_authenticated}] do
+      live "/tasks", NewTaskLive
+      # live "/tasks/:id/edit", EditTaskLive
+      get "/tasks/:id/edit", TaskController, :edit
+      post "/tasks", TaskController, :create
+      put "/tasks/:id", TaskController, :toggle_status
+      put "/tasks/:id/edit", TaskController, :update_task
+      delete "/tasks/:id", TaskController, :delete
       live "/users/settings", UserSettingsLive, :edit
       live "/users/settings/confirm_email/:token", UserSettingsLive, :confirm_email
     end
